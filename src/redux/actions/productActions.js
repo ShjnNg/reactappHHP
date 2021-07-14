@@ -5,7 +5,7 @@ import { /* createActions, */ createAction } from 'redux-actions';
 export const getType = (reduxAction) => {
   return reduxAction().type;
 };
-const URL = 'https://piano1.herokuapp.com';
+const URL = 'http://localhost:5000';
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
@@ -52,7 +52,7 @@ export const getProductsByType = (type) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_BYTYPE_REQUEST });
 
-    const { data } = await axios.get(decodeURIComponent(`${URL}/api/search/${decodeURIComponent(type)}`));
+    const { data } = await axios.get(`${URL}/api/search/${type}`);
     
     dispatch({
       type: actionTypes.GET_PRODUCTS_BYTYPE_SUCCESS,
@@ -107,6 +107,22 @@ export const createProduct = (data) => async (dispatch) => {
   catch (error) {
     dispatch({
       type: actionTypes.CREATE_PRODUCTS_FAIL,
+    });
+  }
+};
+
+export const updateProduct = (data) => async (dispatch) => {
+  try {
+    
+    dispatch({ type: actionTypes.UPDATE_PRODUCTS_REQUEST });
+    axios.post(`${URL}/api/products/update`, data);
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCTS_SUCCESS
+    });
+  } 
+  catch (error) {
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCTS_FAIL,
     });
   }
 };

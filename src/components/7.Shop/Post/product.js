@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
-/* import useStyles from '../style'; */
 import { useDispatch } from 'react-redux';
-// import { updatePost } from '../../../redux/actions';
-/* import { Link } from "react-router-dom"; */
-/* import {  delProduct } from '../../../redux/actions/productActions'; */
 import { addToCart } from "../../../redux/actions/cartActions";
 import toast, { Toaster } from 'react-hot-toast';
+import { updateProduct } from '../../../redux/actions/productActions';
 
 export default function Product({ product }) {
-  const [qty /* setQty */] = useState(1);
-/*   const classes = useStyles(); */
+  const [qty] = useState(1);
   const dispatch = useDispatch();
   const notify = () => toast.success('Đã thêm mặt hàng ' + product.title + ' vào giỏ hàng', 
     {style: {
@@ -22,9 +18,15 @@ export default function Product({ product }) {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));
-    
     /* history.push(`http://localhost:3000/cart`); */
   };
+
+  const onLikeBtnClick = React.useCallback(() => {
+    dispatch(
+      /* console.log(product.likeCount), */
+      updateProduct({ ...product, likeCount: product.likeCount + 1 })
+    );
+  }, [dispatch, updateProduct]);
 
   return (
               
@@ -39,7 +41,7 @@ export default function Product({ product }) {
                       
                         <i className="fa fa-shopping-cart" />
                       </a>
-                      <a className="btn btn-outline-dark btn-square" ><i className="far fa-heart" /* onClick={onLikeBtnClick} *//></a>
+                      <a className="btn btn-outline-dark btn-square" onClick={onLikeBtnClick}><i className="far fa-heart" /* onClick={onLikeBtnClick} *//></a>
                       {/* <a className="btn btn-outline-dark btn-square" href><i className="fa fa-sync-alt" /></a> */}
                       <a className="btn btn-outline-dark btn-square" href={`/product/${product._id}`}><i className="fa fa-search" /></a>
                     </div>

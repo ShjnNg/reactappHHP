@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+
 export default function NavBar() {
-    return (
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleNavbar = () => setCollapsed(!collapsed);
+  
+  return (
         <div className="container-fluid bg-dark mb-30">{/* thanh navbar */}
         <div className="row px-xl-5">
         <div className="col-lg-3 d-none d-lg-block"> {/* danh mục */}
         
-        <a className="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" style={{height: '65px', padding: '0 30px'}}>
+        <a className="btn d-flex align-items-center justify-content-between bg-primary w-100 h-100" data-toggle="collapse" style={{height: '65px', padding: '0 30px'}}>
         
         <DropdownButton  
         title="Danh mục" 
@@ -144,18 +151,64 @@ export default function NavBar() {
         </a>
         </div>
 
-
-          
           <div className="col-lg-9">
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
               <a href className="text-decoration-none d-block d-lg-none">
                 <span className="h1 text-uppercase text-dark bg-light px-2">Huy Hoàng</span>
                 <span className="h1 text-uppercase text-light bg-primary px-2 ml-n1">Piano</span>
               </a>
-              <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+              <Navbar color="faded" light>
+                {/* <NavbarBrand href="/" className="mr-auto">
+                  <span className="h1 text-uppercase text-dark bg-light px-2">Huy Hoàng</span>
+                  <span className="h1 text-uppercase text-light bg-primary px-2 ml-n1">Piano</span> 
+                </NavbarBrand> */}
+                <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+                <Collapse isOpen={!collapsed} navbar>
+                  <Nav navbar>
+                    <NavItem>
+                      <NavLink href="/">Trang chủ</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="shop">Mua hàng</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="cart">Giỏ hàng</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="checkout">Thanh toán</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="contact">Liên hệ</NavLink>
+                    </NavItem>
+                  </Nav>
+                  <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
+                  <a href className="btn px-0">
+                    <i className="fas fa-heart text-primary" />
+                    <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: '2px'}}>253</span>
+                  </a>
+                  <a href className="btn px-0 ml-3">
+                    <i className="fas fa-shopping-cart text-primary" />
+                    <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: '2px'}}>6899</span>
+                  </a>
+                </div>
+                </Collapse>
+              </Navbar>
+              {/* <NavDropdown className="navbar-toggler-icon" id="collasible-nav-dropdown" >
+              <div className="navbar-collapse justify-content-between collapse show">
+              <NavDropdown.Item href="/" className="nav-item nav-link active" >Trang chủ</NavDropdown.Item>
+              <NavDropdown.Item href="shop" className="nav-item nav-link active">Mua hàng</NavDropdown.Item>
+              <NavDropdown.Item href="cart" className="nav-item nav-link active">Giỏ hàng</NavDropdown.Item>
+              <NavDropdown.Item href="checkout" className="nav-item nav-link active">Thanh toán</NavDropdown.Item>
+              <NavDropdown.Item href="contact" className="nav-item nav-link active">Liên hệ</NavDropdown.Item>
+              </div>
+            </NavDropdown> */}
+              
+
+
+              {/* <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" onClick={() => onclickbutton()} aria-expanded= {show}>
                 <span className="navbar-toggler-icon" />
               </button>
-              <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+              <div className={classnamea} id="navbarCollapse">
                 <div className="navbar-nav mr-auto py-0">
                   <a href="/" className="nav-item nav-link active">Trang chủ</a>
                   <a href="shop" className="nav-item nav-link">Mua hàng</a>
@@ -173,7 +226,10 @@ export default function NavBar() {
                     <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: '2px'}}>6899</span>
                   </a>
                 </div>
-              </div>
+              </div> */}
+
+
+
             </nav>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function ShopPage() {
     <Header/>
     <NavBar/>
     <Shop/>
-    <Product/>
+    {/* <Product/> */}
     <Footer/>
     </Container>
     

@@ -90,6 +90,29 @@ export const postProductReducer = (state = { product: {} }, action) => {
   }
 };
 
+export const updateProductReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case actionTypes.UPDATE_PRODUCTS_REQUEST:
+      return {
+        loading: true,
+      };
+    case actionTypes.UPDATE_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        data: state.data.map((product) =>
+        product._id === action.payload._id ? action.payload : product
+        ),
+      };
+    case actionTypes.UPDATE_PRODUCTS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const delProductReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case actionTypes.DEL_PRODUCTS_REQUEST:

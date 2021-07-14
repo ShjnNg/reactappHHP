@@ -32,11 +32,11 @@ export default function Header() {
         <form action>
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Tìm kiếm sản phẩm" />
-            <div className="input-group-append">
+            <a className="input-group-append" href= {`/search/${'Piano'}`}>
               <span className="input-group-text bg-transparent text-primary">
                 <i className="fa fa-search" />
               </span>
-            </div>
+            </a>
           </div>
         </form>
       </div>

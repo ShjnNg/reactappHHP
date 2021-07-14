@@ -11,6 +11,7 @@ import {
   getProductDetailsReducer,
   postProductReducer,
   getProductsByTypeReducer,
+  updateProductReducer
 } from "./reducers/productReducers";
 
 const reducer = combineReducers({
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   getProductDetails: getProductDetailsReducer,
   createProduct: postProductReducer,
   getProductsByType: getProductsByTypeReducer,
+  updateProduct: updateProductReducer,
   modal: modalReducers,
   login: loginReducers,
 });
