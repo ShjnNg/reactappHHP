@@ -10,29 +10,29 @@ export default function Vendor() {
         return  (
             
             <div className="container-fluid py-5">
-            <div className="rowvendor px-xl-5">
+            <div className="rowvendor px-xl-5" >
               
                 
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-1.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-1.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-2.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-2.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-3.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-3.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-4.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-4.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-6.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-6.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-7.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-7.jpg"} alt="" />
                   </div>
                   <div className="bg-light p-4">
-                    <img className = "img-vendor" src={process.env.PUBLIC_URL + "/assets/img/vendor-8.jpg"} alt="" />
+                    <img className = "img-fluid" src={process.env.PUBLIC_URL + "/assets/img/vendor-8.jpg"} alt="" />
                   </div>
                 
               
