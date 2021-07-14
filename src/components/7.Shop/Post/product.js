@@ -47,8 +47,8 @@ export default function Product({ product }) {
                   </div>
                   <div className="text-center py-4">
                     <a className="h6 text-decoration-none text-truncate" href={`/product/${product._id}`}>{product.title}</a>
-                    <div className="d-flex align-items-center justify-content-center mt-2">
-                      <h5>{product.cost.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </h5>
+                    <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
+                      <h5>{product.cost.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </h5><h6 className="text-muted ml-2"><del>{(product.cost*1.2).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</del></h6>
                     </div>
                     <div className="d-flex align-items-center justify-content-center mb-1">
                       <small className="fa fa-star text-primary mr-1" />

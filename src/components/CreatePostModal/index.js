@@ -21,7 +21,7 @@ export default function CreatePostModal() {
     color: '',
     description: '',
     type: '',
-    likeCount: '',
+    likeCount: 0,
   });
   const dispatch = useDispatch();
   const { isShow } = useSelector(modalState$);
@@ -41,11 +41,11 @@ export default function CreatePostModal() {
       color: '',
       description: '',
       type: '',
-      likeCount: '',
+      likeCount: 0,
     });/* window.location.reload(); */
   }, [dispatch]);
   
-
+  /* setData({ ...data, likeCount: 0 }) */
   const onSubmit = React.useCallback(() => {
     dispatch(createProduct(data));
     onClose();
@@ -111,6 +111,7 @@ export default function CreatePostModal() {
           value={data.type}
           onChange={(e) => setData({ ...data, type: e.target.value })}
         >
+          <MenuItem value={'Pianoyamaha'}>Piano Yamaha</MenuItem>
           <MenuItem value={'Pianonobel'}>Piano Nobel</MenuItem>
           <MenuItem value={'PianoCasio'}>Piano Casio</MenuItem>
           <MenuItem value={'PianoAstorHorwood'}>Piano Astor & Horwood</MenuItem>

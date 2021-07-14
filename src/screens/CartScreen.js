@@ -69,7 +69,11 @@ const CartScreen = () => {
             <p>{getCartSubTotal().toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} VNĐ</p>
           </div>
           <div>
-            <button>Đặt hàng</button>
+          <Link to="/checkout">
+            <button>
+                <p1>Đặt hàng</p1>
+            </button>
+          </Link>
           </div>
         </div>
       </div>

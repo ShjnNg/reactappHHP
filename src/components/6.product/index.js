@@ -1,12 +1,33 @@
 import React from 'react';
+import {  useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import Product from '../7.Shop/Post/product';
+//Actions
+import { getTop10Products as listProducts } from "../../redux/actions/productActions";
 
-export default function Product() {
+
+export default function Product10() {
+  const dispatch = useDispatch();
+
+  const getTop10Products = useSelector((state) => state.getProducts);
+  const { products } = getTop10Products;
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]); 
+  
         return  (
             <div className="container-fluid pt-5 pb-3">
             <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4"><span className="bg-secondary pr-3">Mặt hàng bán chạy</span></h2>
             <div className="row px-xl-5">
-              <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div className="product-item bg-light mb-4">
+                {products.map((product) => (
+                  <div className="col-lg-3 col-md-6 col-sm-6 pb-1">
+                        <div  key={product._id}>
+                          <Product product={product} />
+                        </div>
+                        </div>
+                      ))}   
+                {/* <div className="product-item bg-light mb-4">
                   <div className="product-img position-relative overflow-hidden">
                     <img className="img-fluid w-100" src={process.env.PUBLIC_URL + "/assets/img/cat-3.jpg"} alt="" />
                     <div className="product-action">
@@ -30,8 +51,7 @@ export default function Product() {
                       <small>(99)</small>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div> */}
             </div>
           </div>
             
