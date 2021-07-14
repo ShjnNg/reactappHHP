@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 /* import { Typography } from '@material-ui/core'; */
 /* import useStyles from './styles'; */
 
 export default function Header() {
  /*  const classes = useStyles(); */
+ const [input, setInput] = useState('');
 
   return (
     <div className="container-fluid">
@@ -31,8 +32,9 @@ export default function Header() {
       <div className="col-lg-4 col-6 text-left">
         <form action>
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Tìm kiếm sản phẩm" />
-            <a className="input-group-append" href= {`/search/${'Piano'}`}>
+            <input type="text" className="form-control" placeholder="Tìm kiếm sản phẩm" 
+            value={input} onInput={e => setInput(e.target.value)}/>
+            <a className="input-group-append" href= {`/search/title/${input}`}>
               <span className="input-group-text bg-transparent text-primary">
                 <i className="fa fa-search" />
               </span>

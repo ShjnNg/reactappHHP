@@ -11,7 +11,8 @@ import {
   getProductDetailsReducer,
   postProductReducer,
   getProductsByTypeReducer,
-  updateProductReducer
+  updateProductReducer,
+  getProductsByTitleReducer
 } from "./reducers/productReducers";
 
 const reducer = combineReducers({
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   createProduct: postProductReducer,
   getProductsByType: getProductsByTypeReducer,
   updateProduct: updateProductReducer,
+  getProductsByTitle: getProductsByTitleReducer,
   modal: modalReducers,
   login: loginReducers,
 });

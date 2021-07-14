@@ -12,6 +12,7 @@ import HomePage from "./screens/HomePage";
 /* import HomeScreen from "./screens/HomeScreen"; */
 import ShopPage from "./screens/ShopPage";
 import ShopPageByType from "./screens/ShopPageByType";
+import ShopPageByTitle from "./screens/ShopPageByTitle";
 import CreatePost from "./screens/CreatePost";
 import Contact from "./screens/ContactPage";
 // import ProductScreen from "./screens/ProductScreen";
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
           <Route exact path="/search/:type" component={ShopPageByType} />
+          <Route exact path="/search/title/:title" component={ShopPageByTitle} />
           <Route exact path="/create" component={CreatePost} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/product/:id" component={DetailPage} />

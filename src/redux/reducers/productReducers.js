@@ -44,6 +44,28 @@ export const getProductsByTypeReducer = (state = { products: [] }, action) => {
   }
 };
 
+export const getProductsByTitleReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_PRODUCTS_BYTITLE_REQUEST:
+      return {
+        loading: true,
+        products: [],
+      };
+    case actionTypes.GET_PRODUCTS_BYTITLE_SUCCESS:
+      return {
+        products: action.payload,
+        loading: false,
+      };
+    case actionTypes.GET_PRODUCTS_BYTITLE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const getProductDetailsReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCT_DETAILS_REQUEST:
