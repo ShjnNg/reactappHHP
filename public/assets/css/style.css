@@ -639,12 +639,6 @@ pre code {
   margin-left: -15px;
 }
 
-.rowvendor {
-  display: flex;
-  flex-wrap: nowrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
 
 .no-gutters {
   margin-right: 0;

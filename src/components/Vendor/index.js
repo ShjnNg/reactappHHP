@@ -1,4 +1,5 @@
 import React from 'react';
+import "./index.css";
 // import Slideshow from '../SlideShow/SlideShow';
 // import OwlCarousel from 'react-owl-carousel';
 // import 'owl.carousel/dist/assets/owl.carousel.css';
