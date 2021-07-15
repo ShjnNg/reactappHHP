@@ -4,13 +4,13 @@ import NavBar from '../components/2.NavBar/index';
 import Product from '../components/6.product'
 import Footer from '../components/Footer';
 import React from 'react';
-import { useState, useEffect } from "react";
+import { /* useState, */ useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 /* import useStyles from '../screens/style'; */
 
 // Actions
 import { getProductDetails } from "../redux/actions/productActions";
-import { addToCart } from "../redux/actions/cartActions";
+/* import { addToCart } from "../redux/actions/cartActions"; */
 
 
 const DetailPage= ({ match, history }) => {

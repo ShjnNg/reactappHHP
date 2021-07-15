@@ -1,4 +1,4 @@
-import { Button, Modal, TextareaAutosize, TextField } from '@material-ui/core';
+import { Button, Modal, /* TextareaAutosize, */ TextField } from '@material-ui/core';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
@@ -20,14 +20,12 @@ export default function LogInModal() {
   }, [dispatch]);
 
   const onSubmit = React.useCallback(() => {
-    if(data.title == 'admin' && data.pass == '237lequangchi')
+    console.log("a");
+    if(data.title === 'admin' && data.pass === '237lequangchi')
     {
         onCloseLogin();
         y=y+1;
-    }
-    {
-        return;
-    }
+    }else return;
   });
 
 
