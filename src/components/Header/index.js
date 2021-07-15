@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 /* import { Typography } from '@material-ui/core'; */
 /* import useStyles from './styles'; */
 
 export default function Header() {
  /*  const classes = useStyles(); */
  const [input, setInput] = useState('');
-
+/*  const handleKeyDown = (target) => {
+  if(target.charCode==13) {
+    console.log(input);
+    <Link to={`/search/title/${input}`} activeClassName="current"></Link>
+    
+  }
+} */
   return (
+    
     <div className="container-fluid">
     <div className="row bg-secondary py-1 px-xl-5">
       <div className="col-lg-6 d-none d-lg-block">
@@ -32,8 +40,15 @@ export default function Header() {
       <div className="col-lg-4 col-6 text-left">
         <form action>
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Tìm kiếm sản phẩm" 
-            value={input} onInput={e => setInput(e.target.value)}/>
+            <input 
+            type="text"
+            className="form-control" 
+            placeholder="Tìm kiếm sản phẩm" 
+            value={input} 
+            onInput={e => setInput(e.target.value)}
+            /* onKeyPress={handleKeyDown} */
+            />
+            
             <a className="input-group-append" href= {`/search/title/${input}`}>
               <span className="input-group-text bg-transparent text-primary">
                 <i className="fa fa-search" />
