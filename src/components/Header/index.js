@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 /* import { Link } from "react-router-dom"; */
 /* import { Typography } from '@material-ui/core'; */
 /* import useStyles from './styles'; */
+import { navigate } from "@reach/router"
 
 export default function Header() {
  /*  const classes = useStyles(); */
  const [input, setInput] = useState('');
-/*  const handleKeyDown = (target) => {
+ const handleKeyDown = (target) => {
   if(target.charCode==13) {
     console.log(input);
-    <Link to={`/search/title/${input}`} activeClassName="current"></Link>
-    
+    {/* <Link to={`/search/title/${input}`} activeClassName="current"></Link> */}
+    navigate(`/search/title/${input}`);
   }
-} */
-  return (
-    
-    <div className="container-fluid">
+}
+const body = (
+<div className="container-fluid">
     <div className="row bg-secondary py-1 px-xl-5">
       <div className="col-lg-6 d-none d-lg-block">
         <div className="d-inline-flex align-items-center d-block d-lg-none">
@@ -46,7 +46,7 @@ export default function Header() {
             placeholder="Tìm kiếm sản phẩm" 
             value={input} 
             onInput={e => setInput(e.target.value)}
-            /* onKeyPress={handleKeyDown} */
+            onKeyPress={handleKeyDown}
             />
             
             <a className="input-group-append" href= {`/search/title/${input}`}>
@@ -71,5 +71,10 @@ export default function Header() {
       </div>
     </div>
   </div>
+);
+  return (
+    <div>
+      {body}
+    </div>
   );
 }
