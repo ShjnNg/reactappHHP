@@ -31,7 +31,7 @@ const body = (
       </div>
     </div>
     <div className="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-      <div className="col-lg-4">
+      <div className="col-lg-5">
         <a href="/" className="text-decoration-none">
           <span className="h1 text-uppercase text-dark bg-light px-2">Huy Hoàng</span>
           <span className="h1 text-uppercase text-light bg-primary px-2 ml-n1">Piano</span>
@@ -57,14 +57,13 @@ const body = (
           </div>
         </form>
       </div>
-      <div className="col-lg-2 col-6 text-right">
+      {/* <div className="col-lg-2 col-6 text-right">
         <div className="d-flex">
-          <a href="https://www.facebook.com/daynhactaidanang" target="blank" className="btn btn-primary btn-square mr-2"><i className="fab fa-twitter" /></a>
           <a href="https://www.facebook.com/daynhactaidanang" target="blank" className="btn btn-primary btn-square mr-2"><i className="fab fa-facebook-f" /></a>
           <a href="https://www.facebook.com/daynhactaidanang" target="blank" className="btn btn-primary btn-square mr-2"><i className="fab fa-linkedin-in" /></a>
           <a href="https://www.facebook.com/daynhactaidanang" target="blank" className="btn btn-primary btn-square"><i className="fab fa-instagram" /></a>
         </div> 
-      </div>
+      </div> */}
       <div className="col-lg-2 col-6 text-right">
         <p className="m-0"> Huy Hoàng</p>
         <h5 className="m-0"> 0934 825 780</h5>

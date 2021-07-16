@@ -33,7 +33,7 @@ export default function Product({ product }) {
                 <div className="product-item bg-light mb-4" >
                   <div className="product-img position-relative overflow-hidden">
                   <div className="product-img">
-                    <img className="w-100 h-100" src={product.attachment} alt={product.name} />
+                    <img className="w-100 h-auto" src={product.attachment} alt={product.name} />
                   </div>
                   
                     <div className="product-action" href={`/product/${product._id}`}>
@@ -52,9 +52,9 @@ export default function Product({ product }) {
                     <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
                       <h5>{product.cost.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </h5>
                     </div>
-                    <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
+                    {/* <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
                       <h6 className="text-muted ml-2"><del>{(product.cost*1.2).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</del></h6>
-                    </div>
+                    </div> */}
                     <div className="d-flex align-items-center justify-content-center mb-1">
                       <small className="fa fa-star text-primary mr-1" />
                       <small className="fa fa-star text-primary mr-1" />
