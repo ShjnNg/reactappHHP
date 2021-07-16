@@ -3,6 +3,7 @@ import {  useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Post/product';
 import {Container} from "@material-ui/core";
+import { Spinner } from 'react-awesome-spinners'
 //Actions
 import { getProductsByType as listProducts } from "../../redux/actions/productActions";
 
@@ -133,7 +134,7 @@ export default function PostList({ text }) {
                 </div>
               </div>
               {loading ? (
-              <h2>Đang tải...</h2>
+              <h2>Đang tải<Spinner /></h2>
                   ) : error ? (
                     <h2>{error}</h2>
                   ) : (

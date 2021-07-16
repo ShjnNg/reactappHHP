@@ -1,8 +1,5 @@
 import React from 'react';
-/* import {CardMedia} from '@material-ui/core'; */
-/* import useStyles from '../12.ManagePost/style'; */
 import { useDispatch } from 'react-redux';
-/* import { Link } from "react-router-dom"; */
 import {  delProduct } from '../../redux/actions/productActions';
 
 

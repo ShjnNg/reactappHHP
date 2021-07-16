@@ -2,6 +2,7 @@ import React from 'react';
 import { /* useState, */ useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {Container} from "@material-ui/core";
+import { Spinner } from 'react-awesome-spinners';
 
 import Product from './index';
 //Actions
@@ -135,7 +136,7 @@ export default function PostList() {
                 </div>
               </div>
               {loading ? (
-              <h2>Đang tải...</h2>
+              <h2>Đang tải<Spinner /></h2>
                   ) : error ? (
                     <h2>{error}</h2>
                   ) : (
