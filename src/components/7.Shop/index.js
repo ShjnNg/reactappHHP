@@ -1,7 +1,7 @@
 import React from 'react';
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-
+import {Container} from "@material-ui/core";
 import Product from './Post/product';
 //Actions
 import { getProducts as listProducts } from "../../redux/actions/productActions";
@@ -10,14 +10,15 @@ export default function PostList() {
   const dispatch = useDispatch();
 
   const getProducts = useSelector((state) => state.getProducts);
-  const { products } = getProducts;
+  const { loading, error,products } = getProducts;
+
 
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
   return (
-    
+    <Container maxWidth="xl" className = {{}}>
     <div className="container-fluid">
         <div className="row px-xl-5">
           {/* Shop Sidebar Start */}
@@ -133,16 +134,25 @@ export default function PostList() {
                   </div>
                 </div>
               </div>
-                {products.map((product) => (
-                  <div className="col-lg-3 col-md-6 col-sm-6 pb-1">
-                        <div  key={product._id}>
-                          <Product product={product} />
-                        </div>
-                        </div>
-                      ))}   
+              {loading ? (
+              <h2>Đang tải...</h2>
+                  ) : error ? (
+                    <h2>{error}</h2>
+                  ) : (
+                    <>
+                      {products.map((product) => (
+                        <div className="col-lg-3 col-md-6 col-sm-6 pb-1">
+                              <div  key={product._id}>
+                                <Product product={product} />
+                              </div>
+                              </div>
+                            ))}   
+                      </>
+                    )}
             </div>
           </div>
         </div>
       </div>
+    </Container>
   );
 }

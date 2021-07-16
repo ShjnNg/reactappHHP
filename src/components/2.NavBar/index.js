@@ -169,16 +169,16 @@ export default function NavBar() {
                       <NavLink href="/">Trang chủ</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="shop">Mua hàng</NavLink>
+                      <NavLink href="/shop">Mua hàng</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="cart">Giỏ hàng</NavLink>
+                      <NavLink href="/cart">Giỏ hàng</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="checkout">Thanh toán</NavLink>
+                      <NavLink href="/checkout">Thanh toán</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="contact">Liên hệ</NavLink>
+                      <NavLink href="/contact">Liên hệ</NavLink>
                     </NavItem>
                   </Nav>
                   <div className="navbar-nav ml-auto py-0 d-none d-lg-block">

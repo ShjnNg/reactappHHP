@@ -1,6 +1,7 @@
 import React from 'react';
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import {Container} from "@material-ui/core";
 import Product from './Post/product';
 //Actions
 import { getProductsByTitle as listProducts } from "../../redux/actions/productActions";
@@ -8,14 +9,14 @@ import { getProductsByTitle as listProducts } from "../../redux/actions/productA
 export default function PostList({ text }) {
   const dispatch = useDispatch();
   const getProductsByTitle = useSelector((state) => state.getProductsByTitle);
-  const { products } = getProductsByTitle; 
+  const { loading, error,products } = getProductsByTitle; 
   
   useEffect(() => {
     dispatch(listProducts(decodeURIComponent(text.match.params.title)));
   }, [dispatch ]);
 
   return (
-    
+    <Container maxWidth="xl" className = {{}}>
     <div className="container-fluid">
         <div className="row px-xl-5">
           {/* Shop Sidebar Start */}
@@ -131,16 +132,29 @@ export default function PostList({ text }) {
                   </div>
                 </div>
               </div>
-                {products.map((product) => (
-                  <div className="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div  key={product._id}>
-                          <Product product={product} />
-                        </div>
-                        </div>
-                      ))}   
+              {loading ? (
+              <h2>Đang tải...</h2>
+                  ) : error ? (
+                    <h2>{error}</h2>
+                  ) : (
+                    <>
+                      {products.map((product) => (
+                        <div className="col-lg-3 col-md-6 col-sm-6 pb-1">
+                              <div  key={product._id}>
+                                <Product product={product} />
+                              </div>
+                              </div>
+                            ))}   
+                      </>
+                    )}
             </div>
           </div>
         </div>
       </div>
+    </Container>
+    
+    
+    
+    
   );
 }

@@ -36,7 +36,7 @@ const DetailPage= ({ match, history }) => {
     <Header/>
     <NavBar/>
     {loading ? (
-        <h2>Loading...</h2>
+        <h2>Đang tải ...</h2>
       ) : error ? (
         <h2>{error}</h2>
       ) : (
