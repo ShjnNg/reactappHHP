@@ -14,8 +14,7 @@ dotenv.config()
 import { getCountProducts } from "../../redux/actions/productActions"; */
 
 export default function PostList() {
-  const URL = process.env.REACT_APP_URL;
-  console.log(process.env.REACT_APP_URL);
+  const URLchange = process.env.REACT_APP_URLheruko;
   const [pg, setpg] = useState(1);
   const [skip, setskip] = useState(0);
   const [count, setcount] = useState(0);
@@ -24,7 +23,7 @@ export default function PostList() {
   const [loading, setLoadingState] = useState(true);
   const [products,setprod] = useState([]);
   const getcountP = async() => {
-   await axios.get(`${URL}/api/count/product`).
+   await axios.get(`${URLchange}/api/count/product`).
   then((response) => {
     setcount(response.data);
   })
@@ -33,7 +32,7 @@ export default function PostList() {
 const getproductss = async(page, limit) =>{
   try {
     setLoadingState(true);
-    await axios.get(`${URL}/api/products/${page}/${limit}`)
+    await axios.get(`${URLchange}/api/products/${page}/${limit}`)
       .then((res) => {
         setprod(res.data)
         setLoadingState(false)
