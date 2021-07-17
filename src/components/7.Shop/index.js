@@ -6,15 +6,13 @@ import { Spinner } from 'react-awesome-spinners';
 import axios from "axios";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-import dotenv from 'dotenv';
-dotenv.config()
 
 //Actions
 /* import { getProductsByPage as listProducts } from "../../redux/actions/productActions";
 import { getCountProducts } from "../../redux/actions/productActions"; */
 
 export default function PostList() {
-  const URLchange = process.env.REACT_APP_URLheruko;
+  const URLchange = "https://piano1.herokuapp.com";
   const [pg, setpg] = useState(1);
   const [skip, setskip] = useState(0);
   const [count, setcount] = useState(0);

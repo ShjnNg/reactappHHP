@@ -9,8 +9,6 @@ import store from "./redux/store";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
-
-export const URL = process.env.REACT_APP_URL;
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

@@ -1,18 +1,17 @@
 import * as actionTypes from "../constants/productConstants";
 import axios from "axios";
 import { /* createActions, */ createAction } from 'redux-actions';
-
 export const getType = (reduxAction) => {
   return reduxAction().type;
 };
-const URL = 'http://localhost:5000';
-/* const URL = 'https://piano1.herokuapp.com'; */
+/* const url = 'http://localhost:5000'; */
+const url = 'https://piano1.herokuapp.com';
 
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/products`);
+    const { data } = await axios.get(`${url}/api/products`);
 
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -33,7 +32,7 @@ export const getCountProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_COUNTPRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/count/product`);
+    const { data } = await axios.get(`${url}/api/count/product`);
 
     dispatch({
       type: actionTypes.GET_COUNTPRODUCTS_SUCCESS,
@@ -54,7 +53,7 @@ export const getProductsByPage = (page,limit) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTSBYPAGE_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/products/${page}/${limit}`);
+    const { data } = await axios.get(`${url}/api/products/${page}/${limit}`);
 
     dispatch({
       type: actionTypes.GET_PRODUCTSBYPAGE_SUCCESS,
@@ -75,7 +74,7 @@ export const getTop10Products = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/search`);
+    const { data } = await axios.get(`${url}/api/search`);
 
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -96,7 +95,7 @@ export const getProductsByType = (type) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_BYTYPE_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/search/${type}`);
+    const { data } = await axios.get(`${url}/api/search/${type}`);
     
     dispatch({
       type: actionTypes.GET_PRODUCTS_BYTYPE_SUCCESS,
@@ -118,7 +117,7 @@ export const getProductsByTitle = (title) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_BYTITLE_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/search/title/${title}`);
+    const { data } = await axios.get(`${url}/api/search/title/${title}`);
     
     dispatch({
       type: actionTypes.GET_PRODUCTS_BYTITLE_SUCCESS,
@@ -140,7 +139,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/products/${id}`);
+    const { data } = await axios.get(`${url}/api/products/${id}`);
 
     dispatch({
       type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,
@@ -165,7 +164,7 @@ export const createProduct = (data) => async (dispatch) => {
   try {
     
     dispatch({ type: actionTypes.CREATE_PRODUCTS_REQUEST });
-    axios.post(`${URL}/api/products`, data);
+    axios.post(`${url}/api/products`, data);
     dispatch({
       type: actionTypes.CREATE_PRODUCTS_SUCCESS
     });
@@ -181,7 +180,7 @@ export const updateProduct = (data) => async (dispatch) => {
   try {
     
     dispatch({ type: actionTypes.UPDATE_PRODUCTS_REQUEST });
-    axios.post(`${URL}/api/products/update`, data);
+    axios.post(`${url}/api/products/update`, data);
     dispatch({
       type: actionTypes.UPDATE_PRODUCTS_SUCCESS
     });
@@ -197,7 +196,7 @@ export const delProduct = (id) => async (dispatch) => {
   try {
     
     dispatch({ type: actionTypes.DEL_PRODUCTS_REQUEST });
-    axios.delete(`${URL}/api/products/${id}`);
+    axios.delete(`${url}/api/products/${id}`);
     dispatch({
       type: actionTypes.DEL_PRODUCTS_SUCCESS
     });
