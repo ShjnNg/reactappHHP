@@ -2051,7 +2051,6 @@ textarea.form-control {
 .form-check-label {
   margin-bottom: 0;
 }
-
 .form-check-inline {
   display: inline-flex;
   align-items: center;
@@ -3333,6 +3332,12 @@ input[type="button"].btn-block {
 .btn-group-vertical {
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+}
+
+.pagination{
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
 }
 

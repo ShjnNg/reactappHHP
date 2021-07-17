@@ -8,16 +8,20 @@ import loginReducers from './reducers/login';
 import { cartReducer } from "./reducers/cartReducers";
 import {
   getProductsReducer,
+  getProductsByPageReducer,
   getProductDetailsReducer,
   postProductReducer,
   getProductsByTypeReducer,
   updateProductReducer,
-  getProductsByTitleReducer
+  getProductsByTitleReducer,
+  getCountProductsReducer
 } from "./reducers/productReducers";
 
 const reducer = combineReducers({
   cart: cartReducer,
   getProducts: getProductsReducer,
+  getCountProducts:getCountProductsReducer,
+  getProductsbyPage: getProductsByPageReducer,
   getProductDetails: getProductDetailsReducer,
   createProduct: postProductReducer,
   getProductsByType: getProductsByTypeReducer,

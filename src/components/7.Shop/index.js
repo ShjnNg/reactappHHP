@@ -1,23 +1,102 @@
-import React from 'react';
-import {  useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+/* import { useDispatch, useSelector } from 'react-redux'; */
 import {Container} from "@material-ui/core";
 import Product from './Post/product';
 import { Spinner } from 'react-awesome-spinners';
+import axios from "axios";
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import dotenv from 'dotenv';
+dotenv.config()
+
 //Actions
-import { getProducts as listProducts } from "../../redux/actions/productActions";
+/* import { getProductsByPage as listProducts } from "../../redux/actions/productActions";
+import { getCountProducts } from "../../redux/actions/productActions"; */
 
 export default function PostList() {
-  const dispatch = useDispatch();
+  const URL = process.env.REACT_APP_URL;
+  console.log(process.env.REACT_APP_URL);
+  const [pg, setpg] = useState(1);
+  const [skip, setskip] = useState(0);
+  const [count, setcount] = useState(0);
+  const [PageSize, setPageSize] = useState(10);
+  const [error, setErrors] = useState('')
+  const [loading, setLoadingState] = useState(true);
+  const [products,setprod] = useState([]);
+  const getcountP = async() => {
+   await axios.get(`${URL}/api/count/product`).
+  then((response) => {
+    setcount(response.data);
+  })
+  }
+  
+const getproductss = async(page, limit) =>{
+  try {
+    setLoadingState(true);
+    await axios.get(`${URL}/api/products/${page}/${limit}`)
+      .then((res) => {
+        setprod(res.data)
+        setLoadingState(false)
+      })
+  } catch (errorr) {
+    setErrors(errorr)
+  } 
+}
 
-  const getProducts = useSelector((state) => state.getProducts);
-  const { loading, error,products } = getProducts;
+  const PreviewPage = React.useCallback(() => {
+    try {
+      if (pg>1) {
+        const sk = (pg-2)*PageSize + 1;
+        const p = pg-1;
+        getproductss(sk,PageSize);
+        setskip(sk);
+        setpg(p);
+        console.log(sk);
+      }
+    } catch (error) {
+      setErrors(error)
+    }
+    
+  });
+  const NextPage = React.useCallback(() => {
+    try {
+      if (pg<getNumPage) {
+        const sk = (pg)*PageSize + 1;
+        const p = pg+1;
+        getproductss(sk,PageSize);
+        setskip(sk);
+        setpg((p));
+        console.log(sk);
+      }
+    } catch (error) {
+      setErrors(error)
+    }
+  });
 
+/*   const handlePageChange = React.useCallback((pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({activePage: pageNumber});
+    setpg(pageNumber);
+    const sk = (pg)*PageSize + 1;
+    getproductss(sk,PageSize);
+    setskip(sk);
+  }); */
+  
+  const handleClickgetnumproduct = (num) => {
+    if (PageSize != num){
+      setPageSize(num);
+      setPageSize(num);
+      getproductss(skip,num);
+    }
+  };
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    getproductss(skip,PageSize);
+    getcountP();
+  }, []);
 
+  const getNumPage = Math.ceil(count/PageSize);
+  
   return (
     <Container maxWidth="xl" className = {{}}>
     <div className="container-fluid">
@@ -116,22 +195,21 @@ export default function PostList() {
                     <button className="btn btn-sm btn-light ml-2"><i className="fa fa-bars" /></button>
                   </div>
                   <div className="ml-2">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
-                      <div className="dropdown-menu dropdown-menu-right">
-                        <a className="dropdown-item" href="#">Latest</a>
-                        <a className="dropdown-item" href="#">Popularity</a>
-                        <a className="dropdown-item" href="#">Best Rating</a>
-                      </div>
-                    </div>
-                    <div className="btn-group ml-2">
-                      <button type="button" className="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Showing</button>
-                      <div className="dropdown-menu dropdown-menu-right">
-                        <a className="dropdown-item" href="#">10</a>
-                        <a className="dropdown-item" href="#">20</a>
-                        <a className="dropdown-item" href="#">30</a>
-                      </div>
-                    </div>
+                      <DropdownButton 
+                      title = 'Hiển thị'
+                      className="btn-group ml-2" 
+                      data-toggle="dropdown"
+                      >
+                      <Dropdown.Item as="button" onClick={() =>handleClickgetnumproduct(10)}>
+                        <a class="dropdown-item">10</a>
+                      </Dropdown.Item>
+                      <Dropdown.Item  as="button" onClick={() =>handleClickgetnumproduct(20)}>
+                        <a class="dropdown-item">20</a>
+                      </Dropdown.Item>
+                      <Dropdown.Item  as="button" onClick={() =>handleClickgetnumproduct(50)}>
+                        <a class="dropdown-item">50</a>
+                      </Dropdown.Item>
+                      </DropdownButton>
                   </div>
                 </div>
               </div>
@@ -150,6 +228,10 @@ export default function PostList() {
                             ))}   
                       </>
                     )}
+            </div>
+            <div className="pagination">
+            <button className="btn btn-sm pagination" onClick ={PreviewPage}>Trang trước</button>
+            <button className="btn btn-sm pagination" onClick ={NextPage}>Trang sau</button>
             </div>
           </div>
         </div>

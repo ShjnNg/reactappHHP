@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+/* import NavDropdown from 'react-bootstrap/NavDropdown' */
+import { Collapse, Navbar, NavbarToggler, /* NavbarBrand, */ Nav, NavItem, NavLink } from 'reactstrap';
 
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(true);
@@ -16,12 +16,12 @@ export default function NavBar() {
         
         <a className="btn d-flex align-items-center justify-content-between bg-primary w-100 h-100" data-toggle="collapse" style={{height: '65px', padding: '0 30px'}}>
         
-        <DropdownButton  
-        title="Danh mục" 
-        size = "lg"  
-        width = "100%"
-        height = "100%"
-        >
+          <DropdownButton  
+            title="Danh mục" 
+            size = "lg"  
+            width = "100%"
+            height = "100%"
+          >
         <div className="dropdown-item2">
           {['right'].map((direction) => (
             <DropdownButton

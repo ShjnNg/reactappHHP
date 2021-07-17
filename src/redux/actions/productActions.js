@@ -5,8 +5,8 @@ import { /* createActions, */ createAction } from 'redux-actions';
 export const getType = (reduxAction) => {
   return reduxAction().type;
 };
-/* const URL = 'http://localhost:5000'; */
-const URL = 'https://piano1.herokuapp.com';
+const URL = 'http://localhost:5000';
+/* const URL = 'https://piano1.herokuapp.com'; */
 
 export const getProducts = () => async (dispatch) => {
   try {
@@ -21,6 +21,48 @@ export const getProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actionTypes.GET_PRODUCTS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getCountProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_COUNTPRODUCTS_REQUEST });
+
+    const { data } = await axios.get(`${URL}/api/count/product`);
+
+    dispatch({
+      type: actionTypes.GET_COUNTPRODUCTS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_COUNTPRODUCTS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getProductsByPage = (page,limit) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_PRODUCTSBYPAGE_REQUEST });
+
+    const { data } = await axios.get(`${URL}/api/products/${page}/${limit}`);
+
+    dispatch({
+      type: actionTypes.GET_PRODUCTSBYPAGE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_PRODUCTSBYPAGE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

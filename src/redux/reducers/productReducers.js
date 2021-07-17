@@ -22,6 +22,50 @@ export const getProductsReducer = (state = { products: [] }, action) => {
   }
 };
 
+export const getCountProductsReducer = (state = { count: Number }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_COUNTPRODUCTS_REQUEST:
+      return {
+        loading: true,
+        count: Number,
+      };
+    case actionTypes.GET_COUNTPRODUCTS_SUCCESS:
+      return {
+        products: action.payload,
+        loading: false,
+      };
+    case actionTypes.GET_COUNTPRODUCTS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getProductsByPageReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_PRODUCTSBYPAGE_REQUEST:
+      return {
+        loading: true,
+        products: [],
+      };
+    case actionTypes.GET_PRODUCTSBYPAGE_SUCCESS:
+      return {
+        products: action.payload,
+        loading: false,
+      };
+    case actionTypes.GET_PRODUCTSBYPAGE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const getProductsByTypeReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCTS_BYTYPE_REQUEST:
