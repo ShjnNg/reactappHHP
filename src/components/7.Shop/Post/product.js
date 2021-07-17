@@ -33,24 +33,24 @@ export default function Product({ product }) {
                 <div className="product-item bg-light mb-4" >
                   <div className="product-img position-relative overflow-hidden">
                   <div className="product-img">
-                    <img className="w-100 h-auto" src={product.attachment} alt={product.name} />
+                    <img className="w-100 h-auto center" src={product.attachment} alt={product.name} />
                   </div>
                   
                     <div className="product-action" href={`/product/${product._id}`}>
                       <a className="btn btn-outline-dark btn-square" onClick={function(event){notify(); addToCartHandler();}}>
                       
-                        <i className="fa fa-shopping-cart" />
+                        <i className="fa fa-shopping-cart" title="Thêm vào giỏ hàng" />
                       </a>
-                      <a className="btn btn-outline-dark btn-square" onClick={onLikeBtnClick}><i className="far fa-heart" /* onClick={onLikeBtnClick} *//></a>
+                      <a className="btn btn-outline-dark btn-square" onClick={onLikeBtnClick}><i title="Yêu thích sản phẩm" className="far fa-heart"/></a>
                       {/* <a className="btn btn-outline-dark btn-square" href><i className="fa fa-sync-alt" /></a> */}
-                      <a className="btn btn-outline-dark btn-square" href={`/product/${product._id}`}><i className="fa fa-search" /></a>
+                      <a className="btn btn-outline-dark btn-square" href={`/product/${product._id}`}><i className="fa fa-search" title="Xem thông tin chi tiết"/></a>
                     </div>
                     
                   </div>
                   <div className="text-center py-4">
                     <a className="h6 text-decoration-none text-truncate" href={`/product/${product._id}`}>{product.title}</a>
                     <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
-                      <h5>{product.cost.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </h5>
+                      <h5 className = "cost">{product.cost.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </h5>
                     </div>
                     {/* <div className="d-flex align-items-center justify-content-center mt-2 word-wrap">
                       <h6 className="text-muted ml-2"><del>{(product.cost*1.2).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</del></h6>

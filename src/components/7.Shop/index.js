@@ -20,8 +20,8 @@ export default function PostList() {
   const [error, setErrors] = useState('')
   const [loading, setLoadingState] = useState(true);
   const [products,setprod] = useState([]);
-  const getcountP = async() => {
-   await axios.get(`${URLchange}/api/count/product`).
+  const getcountP = async() => 
+  {await axios.get(`${URLchange}/api/count/product`).
   then((response) => {
     setcount(response.data);
   })
@@ -80,7 +80,7 @@ const getproductss = async(page, limit) =>{
   }); */
   
   const handleClickgetnumproduct = (num) => {
-    if (PageSize != num){
+    if (PageSize !== num){
       setPageSize(num);
       setPageSize(num);
       getproductss(skip,num);
@@ -99,7 +99,7 @@ const getproductss = async(page, limit) =>{
     <div className="container-fluid">
         <div className="row px-xl-5">
           {/* Shop Sidebar Start */}
-          <div className="col-lg-3 col-md-4">
+          <div className="col-lg-20 col-md-4">
             {/* Price Start */}
             <h5 className="section-title position-relative text-uppercase mb-3"><span className="bg-secondary pr-3">Lọc theo giá</span></h5>
             <div className="bg-light p-4 mb-30">
@@ -183,7 +183,7 @@ const getproductss = async(page, limit) =>{
           </div>
           {/* Shop Sidebar End */}
           {/* Shop Product Start */}
-          <div className="col-lg-9 col-md-8">
+          <div className="col-lg-80 col-md-8">
             <div className="row pb-3">
               <div className="col-12 pb-1">
                 <div className="d-flex align-items-center justify-content-between mb-4">
@@ -191,11 +191,10 @@ const getproductss = async(page, limit) =>{
                     <button className="btn btn-sm btn-light"><i className="fa fa-th-large" /></button>
                     <button className="btn btn-sm btn-light ml-2"><i className="fa fa-bars" /></button>
                   </div>
-                  <div className="ml-2">
+                  <div className="btn-secondary">
                       <DropdownButton 
                       title = 'Hiển thị'
-                      className="btn-group ml-2" 
-                      data-toggle="dropdown"
+                      variant="secondary"
                       >
                       <Dropdown.Item as="button" onClick={() =>handleClickgetnumproduct(10)}>
                         <a class="dropdown-item">10</a>
