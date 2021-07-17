@@ -99,7 +99,7 @@ const getproductss = async(page, limit) =>{
     <div className="container-fluid">
         <div className="row px-xl-5">
           {/* Shop Sidebar Start */}
-          <div className="col-lg-20 col-md-4">
+          <div className="col-lg-20 20">
             {/* Price Start */}
             <h5 className="section-title position-relative text-uppercase mb-3"><span className="bg-secondary pr-3">Lọc theo giá</span></h5>
             <div className="bg-light p-4 mb-30">
@@ -183,7 +183,7 @@ const getproductss = async(page, limit) =>{
           </div>
           {/* Shop Sidebar End */}
           {/* Shop Product Start */}
-          <div className="col-lg-80 col-md-8">
+          <div className="col-lg-80 col-md-80">
             <div className="row pb-3">
               <div className="col-12 pb-1">
                 <div className="d-flex align-items-center justify-content-between mb-4">
